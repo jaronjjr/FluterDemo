@@ -21,8 +21,8 @@ class _MyHomeState extends State<MyHome> {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => const LoginPage(),
-        'dash': (context) => DashboardScreen(),
+        '/': (context) => const LoginPage(), 
+        'dash': (context) => DashboardScreen(), 
       },
     );
   }

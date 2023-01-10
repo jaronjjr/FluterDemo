@@ -29,6 +29,7 @@ class UserListResponse {
         json['support'] != null ? new Support.fromJson(json['support']) : null;
   }
 
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['page'] = this.page;
@@ -41,9 +42,9 @@ class UserListResponse {
     if (this.support != null) {
       data['support'] = this.support!.toJson();
     }
-    return data;
+    return data; 
   }
-}
+} 
 
 class Data {
   int? id;
@@ -54,7 +55,7 @@ class Data {
 
   Data({this.id, this.email, this.firstName, this.lastName, this.avatar});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json){
     id = json['id'];
     email = json['email'];
     firstName = json['first_name'];
@@ -64,7 +65,7 @@ class Data {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
+    data['id'] = this.id; 
     data['email'] = this.email;
     data['first_name'] = this.firstName;
     data['last_name'] = this.lastName;

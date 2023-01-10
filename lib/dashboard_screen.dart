@@ -66,7 +66,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ));
                 });
           } else {
-            return Center(child: Text('Loading...'));
+            return Center(child: Text('Loading..!'));
           }
         });
   }
