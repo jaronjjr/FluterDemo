@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sample_test1/dashboard_screen.dart';
+import 'package:sample_test1/splash_screen.dart';
+import 'package:sample_test1/user_detail.dart';
 
 import 'package:sample_test1/user_list_response.dart';
 
@@ -20,9 +22,30 @@ class _MyHomeState extends State<MyHome> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
+      onGenerateRoute: (settings) {
+        if (settings.name == 'user_detail') {
+          // Cast the arguments to the correct
+          // type: ScreenArguments.
+          final userdata = settings.arguments as UserData;
+
+          // Then, extract the required data from
+          // the arguments and pass the data to the
+          // correct screen.
+          return MaterialPageRoute(
+            builder: (context) {
+              return UserDetailScreen(userdata: userdata);
+            },
+          );
+        }
+        return null;
+      },
       routes: {
-        '/': (context) => const LoginPage(), 
-        'dash': (context) => DashboardScreen(), 
+        '/': (context) => SplashUIPage(),
+        'dash': (context) => DashboardScreen(),
+        // 'user_detail': (context) {
+
+        //   return UserDetailScreen(userdata: userdata);
+        // }
       },
     );
   }

@@ -35,38 +35,44 @@ class _DashboardScreenState extends State<DashboardScreen> {
             return ListView.builder(
                 itemCount: snapshot.data?.data?.length ?? 0,
                 itemBuilder: (context, index) {
-                  return Container(
-                      color: Colors.amber.shade100,
-                      margin: EdgeInsets.all(5.0),
-                      padding: EdgeInsets.all(15.0),
-                      child: Row(
-                        children: [
-                          Container(
-                              child: Image.network(
-                                  snapshot.data?.data?[index].avatar ?? '')),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                Text(
-                                  '${snapshot.data?.data?[index].firstName ?? ''} ${snapshot.data?.data?[index].lastName ?? ''}',
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  '${snapshot.data?.data?[index].email ?? ''}',
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                              ],
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(
+                          'user_detail',arguments:  snapshot.data?.data?[index]);
+                    },
+                    child: Container(
+                        color: Colors.amber.shade100,
+                        margin: EdgeInsets.all(5.0),
+                        padding: EdgeInsets.all(15.0),
+                        child: Row(
+                          children: [
+                            Container(
+                                child: Image.network(
+                                    snapshot.data?.data?[index].avatar ?? '')),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    '${snapshot.data?.data?[index].firstName ?? ''} ${snapshot.data?.data?[index].lastName ?? ''}',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    '${snapshot.data?.data?[index].email ?? ''}',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ));
+                          ],
+                        )),
+                  );
                 });
           } else {
-            return Center(child: Text('Loading..!'));
+            return Center(child: Text('Loading...'));
           }
         });
   }
